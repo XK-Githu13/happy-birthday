@@ -1,6 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom';
-import ReactPlayer from 'react-player'
+import React, { useState, useEffect, useRef } from 'react';
 import Present from './Present';
 import './index.css'
 

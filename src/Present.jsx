@@ -1,5 +1,4 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import device from 'current-device'
 // import { beFull, isFull } from 'be-full';
@@ -11,38 +10,10 @@ import './index.css'
 const Present = props => {
 
   const [isStart, setIsStart] = useState(true)
-  const [flag, setFlag] = useState(1)
-  const timer = useRef()
 
   function randomNum(min, max) {
     var num = (Math.random() * (max - min + 1) + min).toFixed(2);
     return num;
-  }
-
-  const init = (words) => {
-    let container = document.querySelector('.container');
-    console.log('====', container);
-    let f = document.createDocumentFragment();
-    words.forEach(w => {
-      let word_box = document.createElement('div');
-      let word = document.createElement('div');
-      word.innerText = w;
-      word.classList.add('word');
-      word.style.color = '#BAABDA';
-      word.style.fontFamily = '楷体';
-      word.style.fontSize = '20px'
-      word_box.classList.add('word-box');
-      word_box.style.setProperty("--margin-top", randomNum(-40, 20) + 'vh');
-      word_box.style.setProperty("--margin-left", randomNum(6, 35) + 'vw');
-      word_box.style.setProperty("--animation-duration", randomNum(8, 20) + 's');
-      word_box.style.setProperty("--animation-delay", randomNum(-20, 0) + 's');
-
-      word_box.appendChild(word);
-      f.appendChild(word_box);
-
-
-    })
-    container.appendChild(f);
   }
 
   useEffect(() => {
@@ -52,7 +23,28 @@ const Present = props => {
       console.log('电脑')
       wordsArr = words
     }
-    init(wordsArr);
+    const container = document.querySelector('.container');
+    if (container) {
+      const fragment = document.createDocumentFragment();
+      wordsArr.forEach(w => {
+        const wordBox = document.createElement('div');
+        const word = document.createElement('div');
+        word.innerText = w;
+        word.classList.add('word');
+        word.style.color = '#BAABDA';
+        word.style.fontFamily = '楷体';
+        word.style.fontSize = '20px';
+        wordBox.classList.add('word-box');
+        wordBox.style.setProperty("--margin-top", randomNum(-40, 20) + 'vh');
+        wordBox.style.setProperty("--margin-left", randomNum(6, 35) + 'vw');
+        wordBox.style.setProperty("--animation-duration", randomNum(8, 20) + 's');
+        wordBox.style.setProperty("--animation-delay", randomNum(-20, 0) + 's');
+
+        wordBox.appendChild(word);
+        fragment.appendChild(wordBox);
+      });
+      container.appendChild(fragment);
+    }
     setIsStart(false)
     setTimeout(() => {
       setIsStart(true);
