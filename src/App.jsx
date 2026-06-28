@@ -89,12 +89,18 @@ const PageView = props => {
               steShowTime(true);
               interval();
             }}>礼物在这里</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;
+             from Kang
           </div>
       }
       {
         showTime
           ?
-          <div className='time-div'>{showPresent ? null : (count >= 1 ? <h3>还有：<b>{count}s</b></h3> : <h2>开始！</h2>)}</div>
+          <div className='time-div'>{showPresent ? null : (count >= 1 ? <h3>还有：<b>{count}s</b></h3> : <h2>请看→</h2>)}</div>
           :
           null
       }
